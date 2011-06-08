@@ -7,7 +7,21 @@ Figure out the day suffix for a given day in Objective-C/iOS.
     #import "DaySuffix.h"
     
     // ...
-    NSString *day = [NSString stringWithFormat:"On the %d", [DaySuffix suffixForDay:1]];
+
+    // get today's date
+    NSDate *date = [NSDate date];
+    
+    // month name
+    NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
+    NSString *month = [[format monthSymbols] objectAtIndex:([dateComponents month] - 1)]
+    
+    // get the parts of our date so we can get the day number
+    NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+    NSDateComponents *dateComponents = [gregorian components:(NSDayCalendarUnit) fromDate:sourceDate];
+    
+    // make our day string
+    NSString *day = [NSString stringWithFormat:"On the %d of %@", [DaySuffix suffixForDay:1]];
+
     // ...
 
 ## License
