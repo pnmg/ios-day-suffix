@@ -15,7 +15,7 @@
     Based on: http://stackoverflow.com/questions/739241/python-date-ordinal-output/739266#739266
 */
 + (NSString *)suffixForDay:(NSInteger) day {
-    NSString *s = [[NSString stringWithString:@"st,nd,rd"] autorelease];
+    NSString *s = [NSString stringWithString:@"st,nd,rd"];
     if((day >= 4 && day <= 20) || (day >= 24 && day <= 30)){
         return [NSString stringWithFormat:@"th"];
     }
